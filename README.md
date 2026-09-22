@@ -67,7 +67,7 @@ Primero lo ejecuté normal, desde IntelliJ con la configuración que viene por d
 
 ![Ejecución normal](capturas/eje_normal_espera.png)
 
-Después con la memoria limitada. Me hice una configuración de ejecución llamada `InformeSistema128m` en IntelliJ con la opción de VM `-Xmx128m` y la lancé igual que la otra:
+Después con la memoria limitada. Me hice una configuración de ejecución llamada `InformeSistema128m` con la opción de VM `-Xmx128m` y la lancé igual que la otra:
 
 ![Ejecución con -Xmx128m](capturas/eje_128_espera.png)
 
@@ -81,9 +81,9 @@ En Windows no hay `ps` ni `grep`, así que lo busqué con PowerShell:
 Get-CimInstance Win32_Process -Filter "Name='java.exe'" | Where-Object { $_.CommandLine -match 'InformeSistema' -and $_.CommandLine -notmatch 'jps|BuildMain|Launcher|headless' }
 ```
 
-Filtro por `InformeSistema` en la línea de comandos y descarto los procesos de IntelliJ (`BuildMain` sale siempre al darle a Run y no es mi programa). Luego miro el PID padre con `Get-Process -Id <pid>`.
+Filtro por `InformeSistema` en la línea de comandos y descarto los procesos (`BuildMain` sale siempre al darle a Run y no es mi programa). Luego miro el PID padre con `Get-Process -Id <pid>`.
 
-Con el programa en espera y ejecutándolo desde IntelliJ, esto es lo que sale:
+Con el programa en espera, esto es lo que sale:
 
 ![ps desde el IDE](capturas/ps_ide.png)
 
@@ -95,7 +95,7 @@ Con la configuración `-Xmx128m`, también desde el IDE:
 
 El PID era 23072 (cambia en cada ejecución) y el padre otra vez el 5136. Aquí sí se ve el `-Xmx128m` en la línea de comandos. Me lié la primera vez: no veía el `-Xmx128m` por ningún lado y resultó que se lo había puesto a otra configuración del IDE.
 
-Y lanzándolo desde la propia terminal de IntelliJ (sin darle a Run, escribiendo el comando a mano):
+Y lanzándolo desde terminal (sin darle a Run):
 
 ![ps desde la terminal](capturas/ps_terminal.png)
 
