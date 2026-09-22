@@ -1,6 +1,6 @@
-# Tarea 1 - Radiografía del sistema
+# Tarea 1
 
-Antuan Herrera Icaza ·DAM2 · CPR Daniel Castelao · curso 2026-2027
+Antuan Herrera Icaza 
 
 ## El programa
 
